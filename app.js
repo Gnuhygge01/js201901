@@ -217,4 +217,101 @@
     console.log(res);
 
     var res2 = myFunction(5, 5, () => console.log("DONE"));
+
+
+    console.log("*");
+    var o1 = new Object();
+    // var o1 = {};
+    console.log(o1);
+
+    o1["navn"] = "Mikkel";
+    o1["fødselsår"] = 2003;
+    o1["alder"] = function ()
+    {
+        return new Date().getFullYear()
+            - this["fødselsår"];
+    };
+    console.log(o1);
+    console.log(o1["navn"]);
+    console.log(o1["fødselsår"]);
+    console.log(o1["alder"]());
+    console.log(o1["mf"]);
+
+    // function testadd(a, b) { return a + b; }
+    // testadd["i"] = 1;
+
+    var o2 = new Object();
+    o2.navn = "Mikkel";
+    o2.fødselsår = 2003;
+    o2["by"] = "Værløse";
+    o2.alder = function ()
+    {
+        return new Date().getFullYear()
+            - this.fødselsår;
+    };
+    console.log(o2);
+    console.log(o2.navn);
+    console.log(o2.fødselsår);
+    console.log(o2.by);
+    console.log(o2.alder());
+    console.log(o2.mf);
+
+    var o3 = {
+        navn: "Mikkel",
+        fødselsår: 2003,
+        alder: function ()
+        {
+            return new Date().getFullYear()
+                - this.fødselsår;
+        }
+    };
+    console.log(o3);
+    console.log(o3.navn);
+    console.log(o3.fødselsår);
+    console.log(o3.alder());
+    console.log(o3.mf);
+
+
+
+    skrivNavn(o1);
+    skrivNavn(o2);
+    skrivNavn(o3);
+    skrivNavn({ navn: "Mathias", alder: 12 });
+
+    function skrivNavn(o)
+    {
+        console.log("Navnet er " + o.navn);
+    }
+
+
+    var json = JSON.stringify(o1);
+    console.log(json);
+
+    var nytObject = JSON.parse(json);
+    console.log(nytObject);
+    console.log(nytObject["navn"]);
+
+    //$.get({ url:"", status: 1});
+
+
+    for (let key in o1)
+    {
+        if (typeof (o1[key]) === "function")
+        {
+            console.log(o1[key]());
+        } else
+        {
+            console.log(o1[key]);
+        }
+    }
+    delete o1.navn;
+    console.log(o1);
+    o1.navn = "Mikkel";
+    console.log(o1);
+
+    var o5 = {};
+    o5["$&lfkjf"] = "123";
+    console.log(o5["$&lfkjf"]);
+
+
 })();
